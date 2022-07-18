@@ -1,4 +1,4 @@
-let initialMemory = null
+let initialMemory = process.memoryUsage().heapUsed
 let word = null
 
 console.log(`Your word is ${word}`)
