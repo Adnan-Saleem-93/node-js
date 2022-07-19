@@ -1,20 +1,9 @@
-let initialMemory = process.memoryUsage().heapUsed
-let word = process.argv[2]
-
-console.log(`Your word is ${word}`)
-
-// Create a new array
-let wordArray = []
-
-// Loop 1000 times, pushing into the array each time
-for (let i = 0; i < 1000; i++) {
-  wordArray.push(`${word} count: ${i}`)
+let os = require('os')
+const local = {
+  'Home Directory': os.homedir(),
+  'Operating System': os.type(),
+  'Last Reboot': os.uptime(),
+  'Host name': os.hostname(),
+  'Project Directory': os.homedir()
 }
-
-console.log(
-  `Starting memory usage: ${initialMemory}. \nCurrent memory usage: ${
-    process.memoryUsage().heapUsed
-  }. \nAfter using the loop to add elements to the array, the process is using ${
-    process.memoryUsage().heapUsed - initialMemory
-  } more bytes of memory.`
-)
+console.log(local)
