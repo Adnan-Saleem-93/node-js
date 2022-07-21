@@ -3,7 +3,6 @@ const local = {
   'Home Directory': os.homedir(),
   'Operating System': os.type(),
   'Last Reboot': os.uptime(),
-  'Host name': os.hostname(),
-  'Project Directory': os.homedir()
+  'Host name': os.hostname()
 }
 console.log(local)

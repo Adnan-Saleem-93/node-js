@@ -1,0 +1,23 @@
+{
+  "name": "node-js",
+  "version": "1.0.0",
+  "description": "a node JS learning app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adnan-Saleem-93/node-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "bugs": {
+    "url": "https://github.com/Adnan-Saleem-93/node-js/issues"
+  },
+  "homepage": "https://github.com/Adnan-Saleem-93/node-js#readme"
+}
