@@ -1,8 +1,8 @@
-let os = require('os')
-const local = {
-  'Home Directory': os.homedir(),
-  'Operating System': os.type(),
-  'Last Reboot': os.uptime(),
-  'Host name': os.hostname()
+function celsiusToFahranheit(celsius) {
+  return celsius * (9 / 5) + 32
 }
-console.log(local)
+
+let tempInCelsius = process.argv[2] || 0
+let tempInFahranheit = celsiusToFahranheit(tempInCelsius)
+
+console.log(`${tempInCelsius} Celsius in Fahranheit = ${tempInFahranheit}`)
