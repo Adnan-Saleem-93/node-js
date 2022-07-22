@@ -3,3 +3,7 @@ function celsiusToFahranheit(celsius) {
 }
 
 module.exports.celsiusToFahranheit = celsiusToFahranheit
+
+module.exports.fahranheitToCelsius = function (fahranheit) {
+  return (fahranheit - 32) * (5 / 9)
+}
