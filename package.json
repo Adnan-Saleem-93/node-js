@@ -13,11 +13,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "nodemon": "^2.0.19"
-  },
   "bugs": {
     "url": "https://github.com/Adnan-Saleem-93/node-js/issues"
   },
-  "homepage": "https://github.com/Adnan-Saleem-93/node-js#readme"
+  "homepage": "https://github.com/Adnan-Saleem-93/node-js#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
 }
