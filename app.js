@@ -1,10 +1,11 @@
-const converters = require('./modules/converter-methods')
+let events = require('events') // importing events module
 
-let tempInCelsius = 30
-let tempInFahranheit = converters.celsiusToFahranheit(tempInCelsius)
+// event listener callback function
+let listenerCallback = (name) => {
+  console.log(`Hello ${name}!`)
+}
 
-console.log(`${tempInCelsius} Celsius in Fahranheit = ${tempInFahranheit}`)
+let myEmitter = new events.EventEmitter()
 
-tempInFahranheit = 86
-tempInCelsius = converters.fahranheitToCelsius(tempInFahranheit)
-console.log(`${tempInFahranheit} Fahranheit in Celsius = ${tempInCelsius.toFixed(2)}`)
+myEmitter.on('start', listenerCallback)
+myEmitter.emit('start', 'Adnan')
