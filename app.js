@@ -1,11 +1,12 @@
-let events = require('events') // importing events module
+let {testNumber} = require('./modules/game')
 
-// event listener callback function
-let listenerCallback = (name) => {
-  console.log(`Hello ${name}!`)
+process.stdout.write(
+  'I\'m thinking of a number from 1 through 10. What do you think it is? \n(Write "quit" to give up.)\n\nIs the number ... '
+)
+
+let playGame = (userInput) => {
+  let input = userInput.toString().trim()
+  testNumber(input)
 }
 
-let myEmitter = new events.EventEmitter()
-
-myEmitter.on('start', listenerCallback)
-myEmitter.emit('start', 'Adnan')
+process.stdin.on('data', playGame)
