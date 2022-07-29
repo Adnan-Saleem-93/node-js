@@ -1,12 +1,12 @@
-let {testNumber} = require('./modules/game')
+let api = require('./modules/api')
 
-process.stdout.write(
-  'I\'m thinking of a number from 1 through 10. What do you think it is? \n(Write "quit" to give up.)\n\nIs the number ... '
-)
-
-let playGame = (userInput) => {
-  let input = userInput.toString().trim()
-  testNumber(input)
+// An error-first callback
+let errorFirstCallback = (err, data) => {
+  if (err) {
+    console.log(`Something went wrong. ${err}\n`)
+  } else {
+    console.log(`Something went right. Data: ${data}\n`)
+  }
 }
 
-process.stdin.on('data', playGame)
+api.errorProneAsyncApi('problematic input', errorFirstCallback)
