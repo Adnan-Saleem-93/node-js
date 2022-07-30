@@ -1,12 +1,14 @@
-let api = require('./modules/api')
+// Allocate buffer of size 15 filled with 'b'
+const bufferAlloc = Buffer.alloc(15, 'b')
 
-// An error-first callback
-let errorFirstCallback = (err, data) => {
-  if (err) {
-    console.log(`Something went wrong. ${err}\n`)
-  } else {
-    console.log(`Something went right. Data: ${data}\n`)
-  }
-}
+// Create buffer1 with 'hello' and buffer2 with 'world'
+const buffer1 = Buffer.from('hello')
+const buffer2 = Buffer.from('world')
 
-api.errorProneAsyncApi('problematic input', errorFirstCallback)
+// Combine buffer1 and buffer2
+const bufferArray = [buffer1, buffer2]
+const bufferConcat = Buffer.concat(bufferArray)
+
+// Translate buffer to string
+const bufferString = bufferConcat.toString()
+console.log(bufferString)
