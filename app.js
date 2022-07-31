@@ -1,14 +1,15 @@
-// Allocate buffer of size 15 filled with 'b'
-const bufferAlloc = Buffer.alloc(15, 'b')
+const fs = require('fs')
 
-// Create buffer1 with 'hello' and buffer2 with 'world'
-const buffer1 = Buffer.from('hello')
-const buffer2 = Buffer.from('world')
-
-// Combine buffer1 and buffer2
-const bufferArray = [buffer1, buffer2]
-const bufferConcat = Buffer.concat(bufferArray)
-
-// Translate buffer to string
-const bufferString = bufferConcat.toString()
-console.log(bufferString)
+const readDataCallback = (err, data) => {
+  if (err) {
+    console.log(`Something went wrong: ${err}`)
+  } else {
+    console.log(`Provided file contained: ${data}`)
+  }
+}
+if (fs.existsSync('./file.txt')) {
+  fs.readFile('./file.txt', 'utf-8', readDataCallback)
+} else {
+  fs.writeFileSync('./file.txt', 'secret key', {overwrite: true})
+  fs.readFileSync('./file.txt', 'utf-8', readDataCallback)
+}
