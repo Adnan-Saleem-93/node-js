@@ -1,15 +1,19 @@
 const fs = require('fs')
+const readLine = require('readline')
 
-const readDataCallback = (err, data) => {
-  if (err) {
-    console.log(`Something went wrong: ${err}`)
-  } else {
-    console.log(`Provided file contained: ${data}`)
-  }
+let filePath = './files/shoppingList.txt'
+
+// creating file if it doesn't exist
+if (!fs.existsSync(filePath)) {
+  let shoppingItems = ['bread', 'butter', 'milk', 'chees', 'fruits', 'vegetables']
+  fs.writeFileSync(filePath, shoppingItems.join('\n'))
 }
-if (fs.existsSync('./file.txt')) {
-  fs.readFile('./file.txt', 'utf-8', readDataCallback)
-} else {
-  fs.writeFileSync('./file.txt', 'secret key', {overwrite: true})
-  fs.readFileSync('./file.txt', 'utf-8', readDataCallback)
+
+let myInterface = readLine.createInterface({input: fs.createReadStream(filePath)})
+
+let count = 0
+let printLine = (lineData) => {
+  console.log(`Line ${++count}: ${lineData}`)
 }
+
+myInterface.on('line', printLine)
