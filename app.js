@@ -1,7 +1,8 @@
-setTimeout(() => {
-  console.log('logged')
-}, 0)
+let buffer1 = Buffer.from('hello')
+let buffer2 = Buffer.from('world')
 
-setImmediate(() => {
-  console.log('logging right away')
-})
+let bufferConcat = Buffer.concat([buffer1, buffer2])
+
+setTimeout(() => {
+  console.log(bufferConcat.toString())
+}, 3000)
