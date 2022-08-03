@@ -1,17 +1,7 @@
-const fs = require('fs')
-const readLine = require('readline')
+setTimeout(() => {
+  console.log('logged')
+}, 0)
 
-let filePath = './files/shoppingList.txt'
-let outputFilePath = './files/shoppingResult.txt'
-
-const myInterface = readLine.createInterface({
-  input: fs.createReadStream(filePath)
+setImmediate(() => {
+  console.log('logging right away')
 })
-
-const fileStream = fs.createWriteStream(outputFilePath)
-
-const transformData = (line) => {
-  fileStream.write(`They were out of line: ${line}\n`)
-}
-
-myInterface.on('line', transformData)
