@@ -1,8 +1,9 @@
-let buffer1 = Buffer.from('hello')
-let buffer2 = Buffer.from('world')
+const http = require('http')
+const server = http.createServer((req, res) => {
+  res.end('Hello World')
+})
 
-let bufferConcat = Buffer.concat([buffer1, buffer2])
-
-setTimeout(() => {
-  console.log(bufferConcat.toString())
-}, 3000)
+server.listen(3599, () => {
+  const {port, address} = server.address()
+  console.log(port, address)
+})
