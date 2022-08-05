@@ -1,9 +1,16 @@
-const http = require('http')
-const server = http.createServer((req, res) => {
-  res.end('Hello World')
-})
+const http = require('http');
 
-server.listen(3599, () => {
-  const {port, address} = server.address()
-  console.log(port, address)
-})
+const url = 'http://example.com/users/25/projects?type=personal&month=january';
+
+// Make a GET request with the URL and process the response.
+http.get(url, (res) => {
+  let data = '';
+  
+  res.on('data', (chunk) => {
+    data += chunk;
+  });
+  
+  res.on('end', () => {
+    console.log(data);
+  });
+});
