@@ -1,16 +1,12 @@
-const http = require('http');
+const URL_TO_PARSE = 'https://www.example.com/p/a/t/h?prop1=value1&prop2=value2'
 
-const url = 'http://example.com/users/25/projects?type=personal&month=january';
+const myUrl = new URL(URL_TO_PARSE)
 
-// Make a GET request with the URL and process the response.
-http.get(url, (res) => {
-  let data = '';
-  
-  res.on('data', (chunk) => {
-    data += chunk;
-  });
-  
-  res.on('end', () => {
-    console.log(data);
-  });
-});
+const hostname = myUrl.hostname
+const pathname = myUrl.pathname
+
+const searchParams = myUrl.searchParams
+
+console.log(hostname)
+console.log(pathname)
+console.log(searchParams)
