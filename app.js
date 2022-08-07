@@ -5,4 +5,4 @@ const myUrl = new URL(URL_TO_PARSE)
 const hostname = myUrl.hostname
 const pathname = myUrl.pathname
 
-const searchParams = myUrl.searchParams)
+const searchParams = myUrl.searchParams
