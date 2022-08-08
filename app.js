@@ -1,8 +1,10 @@
-const URL_TO_PARSE = 'https://www.example.com/p/a/t/h?prop1=value1&prop2=value2'
+const querystring = require('querystring')
+const url = 'https://www.example.com/p/a/t/h?course=node&lesson=http'
+const queryToParse = url.split('?')[1]
 
-const myUrl = new URL(URL_TO_PARSE)
+const parsedQuery = querystring.parse(queryToParse)
 
-const hostname = myUrl.hostname
-const pathname = myUrl.pathname
+parsedQuery['exercise'] = 'querystring'
 
-const searchParams = myUrl.searchParams
+const modifiedQueryString = querystring.stringify(parsedQuery)
+console.log(modifiedQueryString)
