@@ -1,10 +1,30 @@
-const querystring = require('querystring')
-const url = 'https://www.example.com/p/a/t/h?course=node&lesson=http'
-const queryToParse = url.split('?')[1]
+const http = require('http')
 
-const parsedQuery = querystring.parse(queryToParse)
+// Creates server instance
+const server = http.createServer((req, res) => {
+  // Write server code here
+  const {method} = req
 
-parsedQuery['exercise'] = 'querystring'
+  switch (method) {
+    case 'GET':
+      handleGetRequest(req, res)
+  }
+})
 
-const modifiedQueryString = querystring.stringify(parsedQuery)
-console.log(modifiedQueryString)
+const handleGetRequest = (req, res) => {
+  const {pathname} = req.url
+
+  if (pathname === '/users') {
+    res.setHeader('Content-Type', 'application/json')
+    return res.end(JSON.stringify([]))
+  }
+
+  res.statusCode = 404
+  return res.end('Requested resource does not exist')
+}
+
+// Starts server listening on specified port
+server.listen(4001, () => {
+  const {address, port} = server.address()
+  console.log(`Server is listening on: http://${address}:${port}`)
+})
