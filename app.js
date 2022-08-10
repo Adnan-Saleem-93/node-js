@@ -2,25 +2,28 @@ const http = require('http')
 
 // Creates server instance
 const server = http.createServer((req, res) => {
-  // Write server code here
   const {method} = req
 
   switch (method) {
     case 'GET':
-      handleGetRequest(req, res)
+      return handleGetRequest(req, res)
+    case 'POST':
+      return handlePostRequest(req, res)
+    default:
+      throw new Error(`Unsupported request method: ${method}`)
   }
 })
 
 const handleGetRequest = (req, res) => {
-  const {pathname} = req.url
+  // Set GET status code here
+  res.statusCode = 200
+  return res.end(JSON.stringify({data: []}))
+}
 
-  if (pathname === '/users') {
-    res.setHeader('Content-Type', 'application/json')
-    return res.end(JSON.stringify([]))
-  }
-
-  res.statusCode = 404
-  return res.end('Requested resource does not exist')
+const handlePostRequest = (req, res) => {
+  // Set POST status code here
+  res.statusCode = 500
+  return res.end('Unable to create record')
 }
 
 // Starts server listening on specified port
